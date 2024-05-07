@@ -1,0 +1,70 @@
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Schatten hinzufügen */
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between; /* Linke und rechte Links trennen */
+  }
+  
+  .left-links {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .left-links li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  .left-links li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .right-links {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .right-links li {
+    display: inline;
+    margin-left: 20px;
+  }
+  
+  .right-links li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* Hinzufügen von Hover-Effekten */
+  .right-links li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Style für Sign-In-Button */
+  .sign-in {
+    background-color: #007bff;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
+  
+  .sign-in:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style für Register-Button */
+  .register {
+    background-color: #28a745;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
+  
+  .register:hover {
+    background-color: #218838;
+  }
+  
