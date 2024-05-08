@@ -1,20 +1,17 @@
 import logo from './logo.png';
 import './App.css';
 
+import React from 'react';
+import LandingPage from './components/common/LandingPage';
+import './styles/App.css';
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         
-        </p>
-        <a
-        >Buche deinen Traumurlaub
-        </a>
-      </header>
+      <LandingPage />
     </div>
   );
 }
 
 export default App;
+
