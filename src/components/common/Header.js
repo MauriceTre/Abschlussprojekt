@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css'; // Importieren des CSS-Moduls
 
 const Header = () => {
@@ -6,10 +7,10 @@ const Header = () => {
     <header>
       <nav>
         <ul className="left-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Destinations</a></li>
-          <li><a href="#">Über uns</a></li>
-          <li><a href="#">Kontact</a></li>
+        <Link to="/" className="white-link">Home</Link>
+          <Link to="/destination" className="white-link">Zu den Destinationen</Link>
+          <Link to="#" className="white-link">Über uns</Link>
+          <Link to="#" className="white-link">Kontakt</Link>
         </ul>
         <ul className="right-links">
           <li><a href="#" className="sign-in">Sign In</a></li>

@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer"
-
+import backgroundImage from "../assets/background.png";
+import "../styles/Landingpage.css"
 
 const LandingPage = () => {
   return (
-    <div className="landing-page">
+    <div className="landing-page"style={{ backgroundImage: `url(${backgroundImage})` }}>
       <Header />
       <main>
         <h1>Welcome to our Travel Planner!</h1>
