@@ -1,4 +1,4 @@
-/* Add global styles here */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -53,10 +53,10 @@ body {
     color: #333;
     font-weight: 400;
     line-height: 1.6;
-    margin: 20px auto; /* Zentrierung des Blocks */
-    width: 80%; /* Breite des Blocks */
+    margin: 20px auto; 
+    width: 80%; 
     text-align: center;
-    display: block; /* Als Blockelement anzeigen */
+    display: block; 
     transition: color 0.3s ease, transform 0.3s ease;
   }
   
