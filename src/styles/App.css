@@ -47,4 +47,23 @@ body {
     color: #fff;
     text-decoration: none;
   }
+  h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.4rem;
+    color: #333;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 20px auto; /* Zentrierung des Blocks */
+    width: 80%; /* Breite des Blocks */
+    text-align: center;
+    display: block; /* Als Blockelement anzeigen */
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  h2:hover {
+    color: #474d54;
+    transform: scale(1.05);
+  }
+  
+  
   
