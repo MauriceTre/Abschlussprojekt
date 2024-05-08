@@ -3,12 +3,12 @@ header {
     background-color: #333;
     color: #fff;
     padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Schatten hinzufügen */
+    box-shadow: 0 2px 5px rgba(14, 13, 13, 0.1); /* Schatten hinzufügen */
   }
   
   nav {
     display: flex;
-    justify-content: space-between; /* Linke und rechte Links trennen */
+    justify-content: space-between; 
   }
   
   .left-links {
@@ -67,4 +67,11 @@ header {
   .register:hover {
     background-color: #218838;
   }
-  
+  ul {
+    padding: 0; 
+    margin: 0; 
+  }
+  .white-link {
+    color: white; 
+    margin-right: 20px;
+  }
