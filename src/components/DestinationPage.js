@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import Header from "./common/Header";
 import Footer from "./common/Footer";
+import Calendar from "react-calendar"; // Importiere den Kalender
+import "react-calendar/dist/Calendar.css"; // Stile für den Kalender
+import TripSummary from "./TripSummary"; // Importiere die Zusammenfassungskomponente
+import "../styles/DestinationPage.css";
+
 const DestinationPage = () => {
-  // Beispiel-Daten für Abflughäfen und Zielflughäfen
   const departureAirports = [
     "Hartsfield–Jackson Atlanta International Airport (ATL) - USA",
     "Beijing Capital International Airport (PEK) - China",
@@ -15,6 +19,7 @@ const DestinationPage = () => {
     "Frankfurt Airport (FRA) - Deutschland",
     "Singapore Changi Airport (SIN) - Singapur",
   ];
+
   const destinationAirports = [
     "London Heathrow Airport (LHR) - Vereinigtes Königreich",
     "Charles de Gaulle Airport (CDG) - Frankreich",
@@ -27,11 +32,12 @@ const DestinationPage = () => {
     "Tokyo Haneda Airport (HND) - Japan",
     "Los Angeles International Airport (LAX) - USA",
   ];
-  // Zustände für die ausgewählten Flughäfen
+
   const [departureAirport, setDepartureAirport] = useState("");
   const [destinationAirport, setDestinationAirport] = useState("");
+  const [startDate, setStartDate] = useState(new Date()); // Startdatum der Reise
+  const [endDate, setEndDate] = useState(new Date()); // Enddatum der Reise
 
-  // Handler-Funktionen für die Änderung der ausgewählten Flughäfen
   const handleDepartureAirportChange = (e) => {
     setDepartureAirport(e.target.value);
   };
@@ -40,43 +46,80 @@ const DestinationPage = () => {
     setDestinationAirport(e.target.value);
   };
 
+  const handleStartDateChange = (date) => {
+    setStartDate(date);
+  };
+
+  const handleEndDateChange = (date) => {
+    setEndDate(date);
+  };
+
   return (
     <div>
-      <Header /> {/* Header einbinden */}
-      <div>
-        <h1>Destination Page</h1>
-        <div>
-          <label htmlFor="departureAirport">Abflughafen:</label>
-          <select
-            id="departureAirport"
-            value={departureAirport}
-            onChange={handleDepartureAirportChange}
-          >
-            <option value="">Wähle einen Abflughafen</option>
-            {departureAirports.map((airport, index) => (
-              <option key={index} value={airport}>
-                {airport}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="destinationAirport">Zielflughafen:</label>
-          <select
-            id="destinationAirport"
-            value={destinationAirport}
-            onChange={handleDestinationAirportChange}
-          >
-            <option value="">Wähle einen Zielflughafen</option>
-            {destinationAirports.map((airport, index) => (
-              <option key={index} value={airport}>
-                {airport}
-              </option>
-            ))}
-          </select>
+      <Header />
+      <div className="destination-page-container">
+        <div className="page-content">
+          <h1>Destination Page</h1>
+          <div className="departure-airport">
+            <label htmlFor="departureAirport">Departure Airport:</label>
+            <select
+              id="departureAirport"
+              value={departureAirport}
+              onChange={handleDepartureAirportChange}
+            >
+              <option value="">Select Departure Airport</option>
+              {departureAirports.map((airport, index) => (
+                <option key={index} value={airport}>
+                  {airport}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="destination-airport">
+            <label htmlFor="destinationAirport">Destination Airport:</label>
+            <select
+              id="destinationAirport"
+              value={destinationAirport}
+              onChange={handleDestinationAirportChange}
+            >
+              <option value="">Select Destination Airport</option>
+              {destinationAirports.map((airport, index) => (
+                <option key={index} value={airport}>
+                  {airport}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="date-container">
+            <div className="start-date">
+              <label htmlFor="startDate">Start Date:</label>
+              <Calendar
+                id="startDate"
+                onChange={handleStartDateChange}
+                value={startDate}
+              />
+            </div>
+            <div className="end-date">
+              <label htmlFor="endDate">End Date:</label>
+              <Calendar
+                id="endDate"
+                onChange={handleEndDateChange}
+                value={endDate}
+              />
+            </div>
+          </div>
+
+          <div className="trip-summary">
+            <TripSummary
+              departureAirport={departureAirport}
+              destinationAirport={destinationAirport}
+              travelStartDate={startDate}
+              travelEndDate={endDate}
+            />
+          </div>
         </div>
       </div>
-      <Footer /> {/* Footer einbinden */}
+      <Footer />
     </div>
   );
 };
