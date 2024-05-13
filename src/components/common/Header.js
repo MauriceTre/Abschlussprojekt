@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css'; // Importieren des CSS-Moduls
+import './Header.css'; 
 
 const Header = () => {
   return (
@@ -13,8 +13,8 @@ const Header = () => {
           <Link to="#" className="white-link">Kontakt</Link>
         </ul>
         <ul className="right-links">
-          <li><a href="#" className="sign-in">Sign In</a></li>
-          <li><a href="#" className="register">Registrierung</a></li>
+        <Link to="/signin"className="white-link">Sign In</Link> 
+      <Link to="/register"className="white-link">Register</Link> 
         </ul>
       </nav>
     </header>
