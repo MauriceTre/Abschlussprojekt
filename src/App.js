@@ -1,26 +1,28 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Hinzufügen von Routes
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import "./styles/App.css";
 import DestinationPage from "./components/DestinationPage";
+import RegisterPage from "./components/auth/Register";
+import SignInPage from "./components/auth/SignIn";
+import PlaneGame from "./components/Minigame";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          {" "}
-          {/* Ändern von Route zu Routes */}
-          <Route path="/" exact element={<LandingPage />} />{" "}
-          {/* Ändern von component zu element und Hinzufügen von {} */}
-          <Route path="/destination" element={<DestinationPage />} />{" "}
-          {/* Ändern von component zu element und Hinzufügen von {} */}
-        </Routes>{" "}
-        {/* Ändern von Route zu Routes */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/destination" element={<DestinationPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/game" element={<PlaneGame />} />
+        </Routes>
       </div>
     </Router>
   );
 }
 
 export default App;
+
