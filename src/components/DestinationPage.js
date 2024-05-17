@@ -1,12 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./common/Header";
 import Footer from "./common/Footer";
 import Calendar from "react-calendar"; // Importiere den Kalender
 import "react-calendar/dist/Calendar.css"; // Stile für den Kalender
 import TripSummary from "./TripSummary"; // Importiere die Zusammenfassungskomponente
 import "../styles/DestinationPage.css";
-
+import axios from "axios";
 const DestinationPage = () => {
+  const [guides, setGuides] = useState([]);
+
+  useEffect(() => {
+    const fetchGuides = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
+      try {
+        const response = await axios.get("/api/guides", {
+          headers: { Authorization: token },
+        });
+        setGuides(response.data);
+      } catch (error) {
+        console.error("Error fetching guides:", error);
+      }
+    };
+
+    fetchGuides();
+  }, []);
   const departureAirports = [
     "Hartsfield–Jackson Atlanta International Airport (ATL) - USA",
     "Beijing Capital International Airport (PEK) - China",

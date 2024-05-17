@@ -1,42 +1,41 @@
 import React, { useState } from "react";
-import "../../styles/SignInPage.css"; 
+import axios from "axios";
+import "../../styles/SignInPage.css";
 
 const SignInPage = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSignIn = () => {
-    //  die Sign-In-Logik einfügen,
-    console.log("Email:", email);
-    console.log("Password:", password);
-    
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/auth/login", {
+        username,
+        password,
+      });
+      const token = response.data.token;
+      localStorage.setItem("token", token);
+      console.log("User signed in:", response.data);
+    } catch (error) {
+      console.error("Error signing in:", error);
+    }
   };
 
   return (
-    <div className="sign-in-container">
+    <div className="signin-page">
       <h1>Sign In</h1>
-      <form className="sign-in-form" onSubmit={handleSignIn}>
+      <form onSubmit={handleSignIn}>
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleEmailChange}
-          required
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
-          onChange={handlePasswordChange}
-          required
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Sign In</button>
       </form>

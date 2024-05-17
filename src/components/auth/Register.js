@@ -1,55 +1,36 @@
-import React, { useState } from "react";
-import "../../styles/RegisterPage.css"; // Importieren Sie Ihre CSS-Datei für die Anpassungen
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../../styles/RegisterPage.css';
 
 const RegisterPage = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleRegister = () => {
-    // Hier können Sie die Registrierungslogik einfügen, z. B. mit Firebase oder einer eigenen Backend-API
-    console.log("Username:", username);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // Hier können Sie die Registrierungslogik implementieren und den Benutzer registrieren
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/api/auth/register', { username, password });
+      console.log('User registered:', response.data);
+    } catch (error) {
+      console.error('Error registering user:', error);
+    }
   };
 
   return (
-    <div className="register-container">
+    <div className="register-page">
       <h1>Register</h1>
-      <form className="register-form" onSubmit={handleRegister}>
+      <form onSubmit={handleRegister}>
         <input
           type="text"
           placeholder="Username"
           value={username}
-          onChange={handleUsernameChange}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleEmailChange}
-          required
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
-          onChange={handlePasswordChange}
-          required
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Register</button>
       </form>
@@ -58,3 +39,4 @@ const RegisterPage = () => {
 };
 
 export default RegisterPage;
+
